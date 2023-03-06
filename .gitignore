@@ -1,0 +1,10 @@
+/.bundle/
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+.env
+openai_chatgpt-**.gem
