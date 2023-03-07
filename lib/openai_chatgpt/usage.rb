@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module OpenaiChatgpt
-  # Address object
+  # Usage object
   class Usage
     attr_reader :prompt_tokens, :completion_tokens, :total_tokens
 
