@@ -100,7 +100,7 @@ module OpenaiChatgpt
       @connection ||= Faraday.new(BASE_URL) do |conn|
         conn.headers["Authorization"] = "Bearer #{@api_key}"
         conn.headers["Content-Type"] = "application/json"
-
+        conn.options.timeout = 120 # Increase the timeout limit to 120 seconds
         conn.response :json, content_type: "application/json"
         conn.adapter adapter, @stubs
       end
