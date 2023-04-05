@@ -4,7 +4,7 @@ require_relative "lib/openai_chatgpt/version"
 
 # rubocop:disable Metrics/BlockLength
 Gem::Specification.new do |spec|
-  spec.name = "openai_chatgpt_longertimeout"
+  spec.name = "openai_chatgpt"
   spec.version = OpenaiChatgpt::VERSION
   spec.authors = ["Sulman Baig"]
   spec.email = ["sulman@hey.com"]
