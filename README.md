@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/openai_chatgpt.svg)](https://badge.fury.io/rb/openai_chatgpt)
+
 # OpenaiChatgpt
 
 OpenAI ChatGPT API is a light-weight Ruby wrapper for the Rubyists. It gives nice struct objects for completions of the chatgpt, even the raw responses are returned in nice open struct objects. It uses Faraday for HTTP requests.
