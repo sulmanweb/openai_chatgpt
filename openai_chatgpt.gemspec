@@ -9,9 +9,12 @@ Gem::Specification.new do |spec|
   spec.authors = ["Sulman Baig"]
   spec.email = ["sulman@hey.com"]
 
-  spec.summary = "OpenAI ChatGPT API is a light-weight Ruby wrapper for the Rubyists. gpt-3.5-turbo, gpt-3.5-turbo-0301"
-  spec.description = "OpenAI ChatGPT API is a light-weight Ruby wrapper for the Rubyists. gpt-3.5-turbo,\
-  gpt-3.5-turbo-0301. You can use this gem to generate text using OpenAI's ChatGPT chat responses API."
+  spec.summary = "OpenAI ChatGPT API is a light-weight Ruby wrapper for the Rubyists.\
+  All models of gpt-4 and gpt-3.5 supported."
+  spec.description = "OpenAI ChatGPT API is a light-weight Ruby wrapper for the Rubyists.\
+  [`gpt-4`, `gpt-4-0314`, `gpt-4-32k`, `gpt-4-32k-0314`, `gpt-3.5-turbo`,\
+  `gpt-3.5-turbo-0301`]. You can use this gem to generate text using OpenAI's ChatGPT\
+  chat responses API."
   spec.homepage = "https://github.com/sulmanweb/openai_chatgpt"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6"

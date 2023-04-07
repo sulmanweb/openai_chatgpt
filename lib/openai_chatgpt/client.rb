@@ -11,13 +11,15 @@ module OpenaiChatgpt
     # api_key: String - Required - API key for OpenAI ChatGPT API (https://platform.openai.com/account/api-keys)
     # adapter: Symbol - Optional - Default: :net_http - Adapter for Faraday connection
     # stubs: Faraday::Adapter::Test::Stubs - Optional - Default: nil - Stubs for Faraday connection
+    # request_timeout: Integer - Optional - Default: 1200 - Timeout for Faraday connection
     # #### Example:
     # client = OpenaiChatgpt::Client.new api_key: "test"
     # #### Description:
     # Client for OpenAI ChatGPT API
-    def initialize(api_key:, adapter: Faraday.default_adapter, stubs: nil)
+    def initialize(api_key:, adapter: Faraday.default_adapter, stubs: nil, request_timeout: 1200)
       @api_key = api_key
       @adapter = adapter
+      @request_timeout = request_timeout
 
       # Test stubs for requests
       @stubs = stubs
@@ -26,8 +28,8 @@ module OpenaiChatgpt
     # #### Params:
     # messages: Array[String] - Required - Messages to generate response for
     #   [{role: "user", text: "Hello"}, {role: "bot", text: "Hi"}]
-    # model: String - Optional - Default: "gpt-3.5-turbo" - Model to use for generating response
-    #   ["gpt-3.5-turbo", "gpt-3.5-turbo-0301"]
+    # model: String - Optional - Default: "gpt-4" - Model to use for generating response
+    #   ["gpt-4", "gpt-4-0314", "gpt-4-32k", "gpt-4-32k-0314", "gpt-3.5-turbo", "gpt-3.5-turbo-0301"]
     # temperature: Float - Optional - Default: 1.0 - Temperature for response generation between 0.0 and 2.0
     # top_p: Float - Optional - Default: 1.0 - Top p for response generation between 0.0 and 1.0
     # n: Integer - Optional - Default: 1 - Number of responses to generate
@@ -51,7 +53,7 @@ module OpenaiChatgpt
     # OpenaiChatgpt::Error
     def completions( # rubocop:disable Metrics/MethodLength, Metrics/ParameterLists
       messages:,
-      model: "gpt-3.5-turbo",
+      model: "gpt-4",
       temperature: 1.0,
       top_p: 1.0,
       n: 1, # rubocop:disable Naming/MethodParameterName
@@ -100,7 +102,7 @@ module OpenaiChatgpt
       @connection ||= Faraday.new(BASE_URL) do |conn|
         conn.headers["Authorization"] = "Bearer #{@api_key}"
         conn.headers["Content-Type"] = "application/json"
-        conn.options.timeout = 1200 # Increase the timeout limit to 1200 seconds
+        conn.options.timeout = @request_timeout
         conn.response :json, content_type: "application/json"
         conn.adapter adapter, @stubs
       end

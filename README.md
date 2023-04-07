@@ -2,6 +2,8 @@
 
 OpenAI ChatGPT API is a light-weight Ruby wrapper for the Rubyists. It gives nice struct objects for completions of the chatgpt, even the raw responses are returned in nice open struct objects. It uses Faraday for HTTP requests.
 
+> It supports all models of gpt-4 and gpt-3.5
+
 ## Installation
 
 Install the gem and add to the application's Gemfile by executing:
@@ -51,8 +53,8 @@ resp = OpenaiChatgpt::Client.new(api_key: "fake").completions(
 Params:
 - messages: Array[String] - Required - Messages to generate response for
    `[{role: "user", text: "Hello"}, {role: "bot", text: "Hi"}]`
-- model: String - Optional - Default: "gpt-3.5-turbo" - Model to use for generating response
-   ["gpt-3.5-turbo", "gpt-3.5-turbo-0301"]
+- model: String - Optional - Default: "gpt-4" - Model to use for generating response
+   ["gpt-4", "gpt-4-0314", "gpt-4-32k", "gpt-4-32k-0314", "gpt-3.5-turbo", "gpt-3.5-turbo-0301"]
 - temperature: Float - Optional - Default: 1.0 - Temperature for response generation between 0.0 and 2.0
 - top_p: Float - Optional - Default: 1.0 - Top p for response generation between 0.0 and 1.0
 - n: Integer - Optional - Default: 1 - Number of responses to generate
